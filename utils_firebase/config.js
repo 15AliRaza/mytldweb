@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "development") {
     measurementId: "G-20898ETGV7",
   };
 } else if (process.env.NODE_ENV === "production") {
-  firebaseConfig = {
+  /*firebaseConfig = {
     apiKey: "AIzaSyDdC4or6Fde87crqMCb37r2WTP1g0-RFTU",
     authDomain: "dao-app-f170b.firebaseapp.com",
     projectId: "dao-app-f170b",
@@ -40,6 +40,17 @@ if (process.env.NODE_ENV === "development") {
     // storageBucket: "users-337f1.appspot.com",
     // messagingSenderId: "936869001543",
     // appId: "1:936869001543:web:d41962670147d69edb7462",
+  };*/
+  // Mine
+
+  firebaseConfig = {
+    apiKey: "AIzaSyCKX5EBTOjqDNUZcg6u3ipdIHWGehmIY9E",
+    authDomain: "mytldweb.firebaseapp.com",
+    projectId: "mytldweb",
+    storageBucket: "mytldweb.appspot.com",
+    messagingSenderId: "325558921348",
+    appId: "1:325558921348:web:50871fd4e27db6dd7ffad1",
+    measurementId: "G-20898ETGV7",
   };
 }
 // for dev
