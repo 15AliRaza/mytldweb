@@ -5,13 +5,24 @@ import "firebase/storage";
 
 let firebaseConfig;
 if (process.env.NODE_ENV === "development") {
-  firebaseConfig = {
+  /*firebaseConfig = {
     apiKey: "AIzaSyD7rnsdx2jSiHFArTSDU3HfW3ZWakY_IeA",
     authDomain: "blogs-e8354.firebaseapp.com",
     projectId: "blogs-e8354",
     storageBucket: "blogs-e8354.appspot.com",
     messagingSenderId: "138709189791",
     appId: "1:138709189791:web:b6289f9518f47eeb444eaa",
+  };*/
+  // Mine
+
+  firebaseConfig = {
+    apiKey: "AIzaSyCKX5EBTOjqDNUZcg6u3ipdIHWGehmIY9E",
+    authDomain: "mytldweb.firebaseapp.com",
+    projectId: "mytldweb",
+    storageBucket: "mytldweb.appspot.com",
+    messagingSenderId: "325558921348",
+    appId: "1:325558921348:web:50871fd4e27db6dd7ffad1",
+    measurementId: "G-20898ETGV7",
   };
 } else if (process.env.NODE_ENV === "production") {
   firebaseConfig = {
