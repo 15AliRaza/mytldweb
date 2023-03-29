@@ -30,7 +30,7 @@ export default (req, res) => {
       disabled: false,
     })
     .then((userRecord) => {
-      fireStore
+      return fireStore
         .collection("users")
         .doc(userRecord.uid)
         .set({
@@ -49,6 +49,10 @@ export default (req, res) => {
           following: [],
           interest: [],
           learning: [],
+        })
+        .then(() => {
+          console.log("Successfully created new user:", userRecord.uid);
+          res.redirect("/admin");
         });
       // See the UserRecord reference doc for the contents of userRecord.
       console.log("Successfully created new user:", userRecord.uid);
@@ -57,5 +61,5 @@ export default (req, res) => {
       console.log("Error creating new user:", error);
     });
 
-  res.redirect("/admin");
+  // res.redirect("/admin");
 };
