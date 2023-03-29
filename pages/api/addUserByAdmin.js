@@ -54,8 +54,8 @@ export default (req, res) => {
         })
         .then(() => {
           console.log("Successfully created new user:", userRecord.uid);
-          // res.redirect("/admin");
-          router.push("/admin");
+          res.redirect("/admin");
+          // router.push("/admin");
         });
       // See the UserRecord reference doc for the contents of userRecord.
       console.log("Successfully created new user:", userRecord.uid);
