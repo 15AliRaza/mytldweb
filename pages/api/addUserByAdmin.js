@@ -1,6 +1,5 @@
 // import db from "../../utils_firebase/firebaseAdmin";
 // import { auth } from "../../utils_firebase/config";
-import { useRouter } from "next/router";
 import { fireStore } from "../../utils_firebase/config";
 import auth from "../../utils_firebase/firebaseAdmin";
 
@@ -18,7 +17,6 @@ export default (req, res) => {
   const email = req.body.email;
   const password = req.body.Password;
   console.log(firstName, lastName, email, password);
-  const router = useRouter();
   // console.log(db);
 
   auth
@@ -55,7 +53,6 @@ export default (req, res) => {
         .then(() => {
           console.log("Successfully created new user:", userRecord.uid);
           res.redirect("/admin");
-          // router.push("/admin");
         });
       // See the UserRecord reference doc for the contents of userRecord.
       console.log("Successfully created new user:", userRecord.uid);
