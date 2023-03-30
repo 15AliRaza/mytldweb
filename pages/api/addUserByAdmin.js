@@ -2,7 +2,6 @@
 // import { auth } from "../../utils_firebase/config";
 import { fireStore } from "../../utils_firebase/config";
 import auth from "../../utils_firebase/firebaseAdmin";
-import { Redirect } from "next";
 
 // export default async (_, res) => {
 //   const ref = await db.collection("sessions").get();
@@ -53,8 +52,7 @@ export default (req, res) => {
         })
         .then(() => {
           console.log("Successfully created new user:", userRecord.uid);
-          // res.status(302).redirect("/admin");
-          redirect("/admin");
+          res.status(302).setHeader("Location", "/admin").send();
         });
       // See the UserRecord reference doc for the contents of userRecord.
       // console.log("Successfully created new user:", userRecord.uid);
