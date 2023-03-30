@@ -54,5 +54,8 @@ export default async function handler(req, res) {
       "<script>window.close();alert('Meeting link successfully copied to clipboard!');</script>"
     );
     // res.end();
+  } else {
+    // Handle the case where tokens is falsy
+    res.status(500).send("Error: could not retrieve access token.");
   }
 }
