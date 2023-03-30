@@ -2,6 +2,7 @@
 // import { auth } from "../../utils_firebase/config";
 import { fireStore } from "../../utils_firebase/config";
 import auth from "../../utils_firebase/firebaseAdmin";
+import { Redirect } from "next";
 
 // export default async (_, res) => {
 //   const ref = await db.collection("sessions").get();
@@ -11,7 +12,7 @@ import auth from "../../utils_firebase/firebaseAdmin";
 //   });
 //   res.status(200).json(allSessions);
 // };
-export default async (req, res) => {
+export default (req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -19,7 +20,7 @@ export default async (req, res) => {
   console.log(firstName, lastName, email, password);
   // console.log(db);
 
-  /*auth
+  auth
     .createUser({
       email: email,
       emailVerified: false,
@@ -52,7 +53,8 @@ export default async (req, res) => {
         })
         .then(() => {
           console.log("Successfully created new user:", userRecord.uid);
-          res.status(302).redirect("/admin");
+          // res.status(302).redirect("/admin");
+          redirect("/admin");
         });
       // See the UserRecord reference doc for the contents of userRecord.
       // console.log("Successfully created new user:", userRecord.uid);
@@ -62,43 +64,4 @@ export default async (req, res) => {
     });
 
   // res.redirect("/admin");
-  */
-  try {
-    const userRecord = await auth.createUser({
-      email: email,
-      emailVerified: false,
-      password: password,
-      displayName: `${firstName} ${lastName}`,
-      photoURL:
-        "https://www.iconpacks.net/icons/1/free-user-icon-295-thumb.png",
-      disabled: false,
-    });
-
-    await fireStore
-      .collection("users")
-      .doc(userRecord.uid)
-      .set({
-        uid: userRecord.uid,
-        summry: {
-          displayName: userRecord.displayName,
-          email: userRecord.email,
-          image: userRecord.photoURL,
-        },
-        role: "user",
-        points: {
-          learningPoint: 100,
-          coachingPoint: 100,
-        },
-        followers: [],
-        following: [],
-        interest: [],
-        learning: [],
-      });
-
-    console.log("Successfully created new user:", userRecord.uid);
-
-    res.status(302).redirect("/admin");
-  } catch (error) {
-    console.log("Error creating new user:", error);
-  }
 };
