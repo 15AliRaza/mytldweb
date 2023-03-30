@@ -61,6 +61,6 @@ export default async function handler(req, res) {
       }),
     });
 
-    // res.redirect(url);
+    res.redirect(url);
   }
 }
