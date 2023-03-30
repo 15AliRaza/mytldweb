@@ -46,31 +46,7 @@ export default async function handler(req, res) {
         },
       },
     });
-    //
-    // Check if the hangout link is present in the response
-    if (result.data.conferenceData && result.data.conferenceData.entryPoints) {
-      const entryPoints = result.data.conferenceData.entryPoints;
-      const hangoutLink = entryPoints.find(
-        (entry) =>
-          entry.entryPointType === "video" && entry.label === "Google Meet"
-      )?.uri;
 
-      // Copy the hangout link to the clipboard
-      if (hangoutLink) {
-        await clipboardy.write(hangoutLink);
-        res.write(
-          "<script>window.close();alert('Meeting link successfully copied to clipboard!');</script>"
-        );
-      } else {
-        res.status(500).json({ error: "Hangout link not found" });
-      }
-    } else {
-      res.status(500).json({ error: "Hangout link not found" });
-    }
-  }
-}
-//
-/* 
     var hangoutLink = await result.data.hangoutLink;
     console.log(hangoutLink);
     await clipboardy.write(hangoutLink);
@@ -81,4 +57,3 @@ export default async function handler(req, res) {
     // res.end();
   }
 }
-*/
