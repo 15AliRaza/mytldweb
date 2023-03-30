@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         },
       },
     });
-    var hangoutLink = result.data.hangoutLink;
+    var hangoutLink = await result.data.hangoutLink;
     console.log(hangoutLink);
     await clipboardy.write(hangoutLink);
     //res.redirect(`/link?hanoutLink=${hangoutLink}`);
@@ -54,8 +54,5 @@ export default async function handler(req, res) {
       "<script>window.close();alert('Meeting link successfully copied to clipboard!');</script>"
     );
     // res.end();
-  } else {
-    // Handle the case where tokens is falsy
-    res.status(500).send("Error: could not retrieve access token.");
   }
 }
