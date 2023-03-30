@@ -55,7 +55,7 @@ export default (req, res) => {
           res.status(302).redirect("/admin");
         });
       // See the UserRecord reference doc for the contents of userRecord.
-      console.log("Successfully created new user:", userRecord.uid);
+      // console.log("Successfully created new user:", userRecord.uid);
     })
     .catch((error) => {
       console.log("Error creating new user:", error);

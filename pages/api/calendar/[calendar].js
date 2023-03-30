@@ -7,7 +7,7 @@ const calendar = google.calendar({
 const oauth2Client = new google.auth.OAuth2(
   "500830928651-k7elbsakk11v6ofk5iprgrs8ifaef3j6.apps.googleusercontent.com",
   "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",
-  "http://localhost:3000/api/calendar/google/redirect"
+  "https://mytldweb.vercel.app/api/calendar/google/redirect"
 );
 const scopes = ["https://www.googleapis.com/auth/calendar"];
 
