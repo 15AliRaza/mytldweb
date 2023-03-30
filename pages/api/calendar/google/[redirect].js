@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   const { tokens } = await oauth2Client.getToken(code);
   console.log(code, tokens);
   const eventData = state.eventData;
-  oauth2Client.setCredentials(tokens);
+  await oauth2Client.setCredentials(tokens);
   if (tokens) {
     const result = await calendar.events.insert({
       calendarId: "primary",
